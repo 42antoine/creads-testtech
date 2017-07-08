@@ -1,0 +1,99 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+		<title>CropIMAGE</title>
+		<style type="text/css">
+			body {
+				/*
+				 * ANTOINE
+				 */
+				margin: 10px;
+			}
+			.zone_zoom {
+				margin: 20px auto;
+				width: 500px;
+				height: 400px;
+				overflow: hidden;
+				float: left;
+				position: absolute;
+				/*
+				 * ANTOINE
+				 */
+				cursor: pointer;
+			}
+			.image {
+				float: left;
+				position: absolute;
+			}
+			.image1 {
+				float: left;
+				position: absolute;
+			}
+			.clear20 {
+				clear: both;
+				height: 20px;
+				overflow: hidden;
+			}
+		</style>
+	</head>
+	<body>
+		<form action='crop.php' method="get" enctype="multipart/form-data">
+			<h3>Instruction :</h3>
+			<ul>
+				<li>
+					Placer la sourie dans la zone de crop
+				</li>
+				<li>
+					1 clique permet de déplacer l'image
+				</li>
+				<li>
+					1 autre clique figera l'image
+				</li>
+			</ul>
+			<div class='clear20'></div>
+			<h3>Quelques détails projet :</h3>
+			<ul>
+				<li>
+					Taille du viseur utilisée : width 291px / height 221px (mesuré sur photoshop)
+				</li>
+				<li>
+					Le script PHP utilise GD pour la manipulation des images
+				</li>
+				<li>
+					Le fichier crop.php contient le code qui crop l'image et la renvoie pour téléchargement
+				</li>
+				<li>
+					Il est possible d'exécuter un test en ligne de commande "php crop.php > testcrop.gif", ce test réalise une image 291*221 à partir des coordonnées x = 20 et y = 13 de l'image fond.jpg
+				</li>
+				<li>
+					Environ 3 heures de réalisation
+				</li>
+			</ul>
+			<div class='clear20'></div>
+			<input type='submit' value='Générer la découpe'/>
+			<div class='clear20'></div>
+
+
+			<div class='zone_zoom'>
+
+				<img src='fond.jpg' class='image'/>
+				<input type="hidden" name="image" value="fond.jpg">
+
+
+				<img src='fondgris.png' class='image1'/>
+
+				<input type="hidden" name="crop_x" value="0">
+				<input type="hidden" name="crop_y" value="0">
+
+
+			</div>
+		</form>
+		<script
+				src="https://code.jquery.com/jquery-1.12.4.min.js"
+				integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ="
+				crossorigin="anonymous"></script>
+		<script
+				src="/zoomarea.js"></script>
+	</body>
+</html>
